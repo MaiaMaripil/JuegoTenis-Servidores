@@ -20,8 +20,11 @@
 }
 
 .tarjeta-perfil{
-    width: clamp(280px, 70vw, 850px);
-    padding: 16px;
+    
+    background-color: transparent;
+    background-image: url(../img/patron_fondo.svg);
+    background-repeat: repeat-x;
+    background-size: contain;
 
     align-items: center;
     justify-content: center;
@@ -30,6 +33,18 @@
 .tarjeta-perfil + .tarjeta{
     margin-top: 48px;
 }
+
+.tarjeta-detalles{
+    box-sizing: border-box;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0;
+
+    background-color: var(--color-base-primario);
+
+    color: var(--color-base-secundario);
+}
+
 
 
 .titulo-inventario{

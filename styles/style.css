@@ -97,16 +97,6 @@ html,body {
   
   isolation: isolate;
 }
-.borde-deco-simple{
-  box-sizing: border-box;
-
-  border: clamp(28px, 50vw, 100px) solid transparent;
-  border-image-source: url("../img/bordes.svg");
-  border-image-slice: 60;
-  border-image-repeat: round;
-  
-  isolation: isolate;
-}
 
 input {
   margin-bottom: 15px;
