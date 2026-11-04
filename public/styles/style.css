@@ -91,7 +91,7 @@ html,body {
   background-clip: padding-box;
 
   border: clamp(28px, 9vw, 90px) solid transparent;
-  border-image-source: url("../img/marco_ver2.svg");
+  border-image-source: url("../img/marco.svg");
   border-image-slice: 48;
   border-image-repeat: round;
   
