@@ -43,6 +43,8 @@
     background-color: var(--color-base-primario);
 
     color: var(--color-base-secundario);
+
+    border:1px solid var(--color-secundario);
 }
 
 .titulo-inventario{
@@ -104,5 +106,9 @@
     left: 16px;
 }
 
-
-/* https://pin.it/5MVxNqyiS */
+.boton-session{
+    background-color: var(--color-secundario);
+    color: var(--color-base-secundario);
+    
+    font-family: var(--font-family-texto);
+}

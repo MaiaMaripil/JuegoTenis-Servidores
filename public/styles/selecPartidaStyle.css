@@ -25,14 +25,14 @@
 }
 
 .boton-dif:hover {
-  background-color: #252525;
-  color: #ffffff;
+  background-color: var(--color-base-primario);
+  color: var(--color-base-secundario);
 }
 
 .boton-guardar{
- color: #fff;
+  color: var(--color-base-secundario);
   padding: 15px;
-  background-color: #252525;
+  background-color: var(--color-secundario);
   border-radius: 5px;
   font-size: 18px;    
   font-weight: 600;
@@ -45,6 +45,10 @@
 
 .boton-guardar:hover, .ver-detalle:hover{
   transform: translateY(-2px);
+}
+
+.link-registro{
+  color: var(--color-acento);
 }
 
 
