@@ -9,7 +9,7 @@ botonRegistrar.addEventListener('click', async (e) => {
         nombreUsuario: document.getElementById('nombreUsuario').value,
         email: document.getElementById('email').value,
         password: document.getElementById('password').value
-    };
+    }
 
 
     //Se mandan los datos al servidor con fetch

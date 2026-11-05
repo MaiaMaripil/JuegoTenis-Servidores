@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Iniciar sesion</title>
     <link rel="stylesheet" href="../../styles/style.css">
     <link rel="stylesheet" href="../../styles/selecPartidaStyle.css">
 </head>
@@ -14,15 +14,15 @@
 
     <section class="tarjeta tarjeta-borde-deco borde-deco">
         <h2>Iniciar sesion</h2>
-        <p>usuario: tenis</p>
-        <p>contraseña: 123</p>
+         <h2 id="mensaje"></h2>
         <form class="form-partida" id="form-login">
         <input type="text" id="login-email" placeholder="Usuario o Email" required>
         <input type="password" id="login-password" placeholder="Contraseña" required>
-        <button type="submit" class="boton-guardar">Ingresar</button>
-        
+        <button id="botonIngresar"  type="submit" class="boton-guardar">Ingresar</button>
+        </form>
         <p>No tenes cuenta? <a href="registro.html" class="link-registro"> Registrate</a></p>
-    </form>
+    
+
     </section>
 
     <script src="../../js/login.js"></script>
