@@ -41,6 +41,7 @@ botonIngresar.addEventListener('click', async (e) => {
         mensajeEstado.style.color = 'yellow';
         mensajeEstado.textContent = resultado.mensaje;
         localStorage.setItem('sesionActiva', 'true');
+        localStorage.setItem('usuarioActual', JSON.stringify(resultado.usuario));
 
         
 

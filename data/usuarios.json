@@ -4,20 +4,26 @@
     "nombre": "juana",
     "nombreUsuario": "tenis",
     "email": "juanaR@gmail.com",
-    "password": "123"
+    "password": "123",
+    "agilidad": 0,
+    "golpe": 0
   },
   {
     "id": "1793835852974",
     "nombre": "Maia",
     "nombreUsuario": "mai",
     "email": "mai@gmail.com",
-    "password": "1234"
+    "password": "1234",
+    "agilidad": 0,
+    "golpe": 0
   },
   {
     "id": "1793836279883",
     "nombre": "Susana",
     "nombreUsuario": "susi",
     "email": "s@gmail.com",
-    "password": "hola123"
+    "password": "hola123",
+    "agilidad": 0,
+    "golpe": 0
   }
 ]
