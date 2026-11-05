@@ -16,16 +16,19 @@
 
     <section class="tarjeta tarjeta-borde-deco borde-deco">
         <h2>Registrate</h2>
-        <form class="form-partida">
-        <input type="text" placeholder="Email" required>
-        <input type="text" placeholder="Nombre de usuario" required>
-        <input type="password" placeholder="Contraseña" required>
-        <input type="password" placeholder="Ingrese nuevamente su contraseña" required>
-        <button type="submit" class="boton-guardar">Registrarme</button>
+        <form class="form-partida" id="formRegistro">
+            <input id="nombre" type="text" placeholder="Alias/Nombre">
+            <input id="nombreUsuario"  type="text" placeholder="Nombre de usuario" required>
+            <input id="email"   type="text" placeholder="Email" required>
+            <input id="password"   type="password" placeholder="Contraseña" required>
+            <button id="botonRegistrar" type="submit" class="boton-guardar">Registrarme</button>
         
-    </form>
-    </section>
 
+        </form>
+
+        <h2 id="mensaje"></h2>
+    </section>
+<script src="../../js/registro.js"></script>
 </body>
 
 </html>
