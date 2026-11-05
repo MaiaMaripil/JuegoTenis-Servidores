@@ -12,12 +12,8 @@ const usuarioGuardado = localStorage.getItem("usuarioActual");
 if (usuarioGuardado) {
     const usuario = JSON.parse(usuarioGuardado);
     nombre.textContent = usuario.nombreUsuario || usuario.nombre;
-    if (usuario.agilidad !== undefined) {
-        agilidad.textContent = `Agilidad: ${usuario.agilidad}`;
-    }
-    if (usuario.golpe !== undefined) {
-        golpe.textContent = `Golpe: ${usuario.golpe}`;
-    }
+    agilidad.textContent = `Agilidad: ${usuario.agilidad ?? 0}`;
+    golpe.textContent = `Golpe: ${usuario.golpe ?? 0}`;
     
     foto.src = "../../img/foto_usuario.gif"; /* cambiamos la foto del perfil del usuario que ya inicio sesion */
 }
