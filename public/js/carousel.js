@@ -1,7 +1,4 @@
-function ph(i,hue){
-  var s='<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><rect width="200" height="200" fill="hsl('+hue+',55%,'+(35+(i%4)*8)+'%)"/><text x="100" y="118" font-size="64" text-anchor="middle" fill="rgba(255,255,255,.85)" font-family="Helvetica">'+(i+1)+'</text></svg>';
-  return 'data:image/svg+xml;utf8,'+encodeURIComponent(s);
-}
+const usuario = JSON.parse(localStorage.getItem("usuarioActual"));
 
 var N = 24;
 var STEP = 360 / N;

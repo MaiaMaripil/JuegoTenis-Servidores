@@ -2,6 +2,17 @@ const fs = require('fs');
 const path = require('path');
 const rutaDatosUsuario = path.join(__dirname, '../data/usuarios.json');
 
+const inventarioInicial = () => ({
+    guantes: ['guante-basico'],
+    zapatos: ['zapato-basico'],
+    equipados: {
+        guante: 'guante-basico',
+        zapato: 'zapato-basico'
+    }
+});
+
+const obtenerInventarioUsuario = usuario => usuario.inventario ?? inventarioInicial();
+
 const obtenerUsuarios = () => {
     const datosGuardados = fs.readFileSync(rutaDatosUsuario, 'utf-8');
     return JSON.parse(datosGuardados);
@@ -26,7 +37,8 @@ const registrarUsuario = (req, res) => {
                 email,
                 password,
                 agilidad: 0,
-                golpe: 0
+                golpe: 0,
+                inventario: inventarioInicial()
             };
 
             usuarios.push(nuevoUsuario);
@@ -63,7 +75,8 @@ const verificarLogin = (req, res) => {
                     nombreUsuario: usuarioEncontrado.nombreUsuario,
                     email: usuarioEncontrado.email,
                     agilidad: usuarioEncontrado.agilidad ?? 0,
-                    golpe: usuarioEncontrado.golpe ?? 0
+                    golpe: usuarioEncontrado.golpe ?? 0,
+                    inventario: obtenerInventarioUsuario(usuarioEncontrado)
                 }
             };
         } else {

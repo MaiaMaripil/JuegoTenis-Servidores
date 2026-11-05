@@ -6,7 +6,19 @@
     "email": "juanaR@gmail.com",
     "password": "123",
     "agilidad": 0,
-    "golpe": 0
+    "golpe": 0,
+    "inventario": {
+      "guantes": [
+        "guante-basico"
+      ],
+      "zapatos": [
+        "zapato-basico"
+      ],
+      "equipados": {
+        "guante": "guante-basico",
+        "zapato": "zapato-basico"
+      }
+    }
   },
   {
     "id": "1793835852974",
@@ -15,7 +27,19 @@
     "email": "mai@gmail.com",
     "password": "1234",
     "agilidad": 0,
-    "golpe": 0
+    "golpe": 0,
+    "inventario": {
+      "guantes": [
+        "guante-basico"
+      ],
+      "zapatos": [
+        "zapato-basico"
+      ],
+      "equipados": {
+        "guante": "guante-basico",
+        "zapato": "zapato-basico"
+      }
+    }
   },
   {
     "id": "1793836279883",
@@ -24,6 +48,18 @@
     "email": "s@gmail.com",
     "password": "hola123",
     "agilidad": 0,
-    "golpe": 0
+    "golpe": 0,
+    "inventario": {
+      "guantes": [
+        "guante-basico"
+      ],
+      "zapatos": [
+        "zapato-basico"
+      ],
+      "equipados": {
+        "guante": "guante-basico",
+        "zapato": "zapato-basico"
+      }
+    }
   }
 ]
