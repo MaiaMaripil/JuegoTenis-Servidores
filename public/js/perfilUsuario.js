@@ -18,4 +18,6 @@ if (usuarioGuardado) {
     if (usuario.golpe !== undefined) {
         golpe.textContent = `Golpe: ${usuario.golpe}`;
     }
+    
+    foto.src = "../../img/foto_usuario.gif"; /* cambiamos la foto del perfil del usuario que ya inicio sesion */
 }
