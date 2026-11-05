@@ -11,7 +11,7 @@ const USUARIO_FICTICIO = {
 /*Comportamiento para ir al perfil de usuario */
 const linkPerfil = document.getElementById('link-perfil');
 
-if (linkPerfil) { // Buens práctica: verificar que el elemento exista en la página
+if (linkPerfil) { 
     linkPerfil.addEventListener('click', (e) => {
         const estaLogueado = localStorage.getItem('sesionActiva') === 'true';
 
@@ -43,8 +43,7 @@ if (formLogin) {
             window.location.href = 'perfilUsuario.html';
 
         } else {
-
-            alert("No existe");
+            
         }
     });
 }
