@@ -63,11 +63,11 @@
     }
   },
   {
-    "id": "d05c48a7-543a-4162-9a2c-9d7217788f3c",
-    "nombre": "Tiara",
-    "nombreUsuario": "Tiara",
-    "email": "tiara",
-    "password": "1",
+    "id": "6d393008-cdee-427f-8401-1a13c6be50e2",
+    "nombre": "tiara",
+    "nombreUsuario": "tiara",
+    "email": "tiara@gmail.com",
+    "password": "12345678",
     "agilidad": 0,
     "golpe": 0,
     "inventario": {
