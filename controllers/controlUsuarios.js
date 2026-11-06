@@ -28,10 +28,11 @@ const registrarUsuario = (req, res) => {
         const existe = usuarios.find(u => u.email === email || u.nombreUsuario === nombreUsuario);
 
         if (existe) {
+            estado = 409; /* error de conlicto con estado actual del recurso */
             respuesta = { error: 'El email o nombre de usuario ya esta registrado.' };
         } else {
             const nuevoUsuario = {
-                id: String(Date.now()),
+                id: crypto.randomUUID(), /* crea un id de usuario más seguro */
                 nombre,
                 nombreUsuario,
                 email,
