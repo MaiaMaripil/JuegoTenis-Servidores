@@ -2,6 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const rutaDatosUsuario = path.join(__dirname, '../data/usuarios.json');
 
+const crypto = require('crypto');
+
 const inventarioInicial = () => ({
     guantes: ['guante-basico'],
     zapatos: ['zapato-basico'],

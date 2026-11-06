@@ -61,5 +61,26 @@
         "zapato": "zapato-basico"
       }
     }
+  },
+  {
+    "id": "d05c48a7-543a-4162-9a2c-9d7217788f3c",
+    "nombre": "Tiara",
+    "nombreUsuario": "Tiara",
+    "email": "tiara",
+    "password": "1",
+    "agilidad": 0,
+    "golpe": 0,
+    "inventario": {
+      "guantes": [
+        "guante-basico"
+      ],
+      "zapatos": [
+        "zapato-basico"
+      ],
+      "equipados": {
+        "guante": "guante-basico",
+        "zapato": "zapato-basico"
+      }
+    }
   }
 ]

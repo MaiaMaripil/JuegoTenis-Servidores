@@ -27,7 +27,7 @@ botonRegistrar.addEventListener('click', async (e) => {
     if (!respuesta.ok) {
         //si hubo errores
         mensajeEstado.style.color = 'red';
-        mensajeEstado.textContent = resultado.error;
+        mensajeEstado.textContent = resultado.errorers ? resultado.errorers.map(error=> error.msg).join(','): resultado.error;
     } else {
         mensajeEstado.style.color = 'yellow';
         mensajeEstado.textContent = resultado.mensaje;
@@ -36,7 +36,7 @@ botonRegistrar.addEventListener('click', async (e) => {
 
         //Para que quede el mensaje unos segundos
         setTimeout(() => {
-        mensaje.textContent = '';
+        mensajeEstado.textContent = '';
       }, 3000);
     }
 

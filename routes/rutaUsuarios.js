@@ -3,9 +3,6 @@ const router = express.Router();
 //importar la funcion del controlador
 const {registrarUsuario, verificarLogin} = require('../controllers/controlUsuarios');
 
-// /api/usuarios/registro
-router.post('/registro', registrarUsuario);
-
 // /api/usuarios/login
 router.post('/login', verificarLogin);
 
@@ -18,7 +15,9 @@ const validarRegistro = [
         .notEmpty()
         .withMessage('El nombre es obligatorio')
         .isLength({min:2, max:30})
-        .withMessage('El nombre debe tener entre 2 y 30 caracteres'),
+        .withMessage('El nombre debe tener entre 2 y 30 caracteres')
+        .matches(/^[a-zA-Z]+$/) // caracteres permitidos
+        .withMessage('El usuario solo puede contener letras'),
     
     body('nombreUsuario')
         .trim()
@@ -26,7 +25,7 @@ const validarRegistro = [
         .withMessage('El nombre de usuario es obligatorio')
         .isLength({min:2, max:20})
         .withMessage('El nombre de usuario debe tener entre 2 y 20 caracteres')
-        .matches(/^[a-zA-Z0-9]+$/) // caracteres permitidos
+        .matches(/^[a-zA-Z0-9_]+$/) // caracteres permitidos
         .withMessage('El usuario solo puede contener letras, números y _'),
 
     body('email')
