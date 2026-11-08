@@ -1,5 +1,21 @@
 let cantidad = 10;
-let fromActual = 0;
+let fromActual;
+
+//funcion para inicializar los valores del from cada vez que se ingresa a la pagina
+function inicializarVistaPartidas() {
+    fromActual = 0; 
+    const contenedor = document.getElementById('partidas-list');
+    
+    if (contenedor) {
+        contenedor.innerHTML = ''; 
+    }
+
+    pedirPartidas(); // Llamamos a la primera tanda
+}
+
+document.addEventListener('DOMContentLoaded', inicializarVistaPartidas);
+
+
 
 const usuarioLogueado = JSON.parse(localStorage.getItem('usuarioActual'));
 const contenedor = document.getElementById('lista-partidas');
@@ -55,9 +71,6 @@ async function pedirPartidas() {
 
 }
 
-
-//al iniciar carga 10 partidas enseguida
-pedirPartidas();
 
 //Si se detecta que sigue scrolleando
 contenedor.addEventListener('scroll', () => {
