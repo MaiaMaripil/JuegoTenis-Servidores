@@ -5,7 +5,9 @@ app.use(express.json());
 app.use(express.static('public'));
 
 const usuariosRoutes = require('./routes/rutaUsuarios');
+const partidasRoutes=require('./routes/rutaPartidas')
 app.use('/api/usuarios', usuariosRoutes);
+app.use('/api/partidas', partidasRoutes);
 
 
 const PORT = 3001;
