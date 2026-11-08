@@ -34,9 +34,10 @@ const mostrarPartidas = (req, res) => {
 }
 
 const mostrarDetallePartida=(req, res) =>{
-    const partidadBuscada=req.params.id;
+    const partidadBuscada=req.params.idPartida;
     const datosPartidas=JSON.parse(fs.readFileSync(rutaDatosPartidas, 'utf-8'));
 
+ //   console.log("ID capturado de la URL:", partidadBuscada);
     const partida=datosPartidas.find(p => String(p.idPartida)=== String(partidadBuscada));
     let estado=200;
     let rta= {};

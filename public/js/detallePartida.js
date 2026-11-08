@@ -2,9 +2,10 @@
 
 document.addEventListener('DOMContentLoaded', async () => {
     const parametrosURL = new URLSearchParams(window.location.search);
-    const partida = parametrosURL.get('id');
+    const idPartida = parametrosURL.get('id');
 
-    const rta = await fetch(`/api/partidas/detallePartida/${partida}`, {
+   // console.log("ID capturado de la URL:", partida);
+    const rta = await fetch(`/api/partidas/detallePartida/${idPartida}`, {
         method: 'GET'
     });
 

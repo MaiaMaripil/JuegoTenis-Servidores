@@ -1,19 +1,19 @@
 let cantidad = 10;
-let fromActual;
+let fromActual=0;
 
 //funcion para inicializar los valores del from cada vez que se ingresa a la pagina
-function inicializarVistaPartidas() {
-    fromActual = 0; 
-    const contenedor = document.getElementById('partidas-list');
-    
-    if (contenedor) {
-        contenedor.innerHTML = ''; 
-    }
+document.addEventListener('DOMContentLoaded', () => {
+  fromActual = 0;
+  const contenedor = document.getElementById('partidas-list');
 
-    pedirPartidas(); // Llamamos a la primera tanda
-}
+  if (contenedor) {
+    contenedor.innerHTML = '';
+  }
 
-document.addEventListener('DOMContentLoaded', inicializarVistaPartidas);
+  pedirPartidas(); //primer tanda
+
+
+})
 
 
 
@@ -24,7 +24,7 @@ async function pedirPartidas() {
   if (usuarioLogueado) {
     const url = `/api/partidas/usuario/${usuarioLogueado.id}?cantidad=${cantidad}&from=${fromActual}`;
 
-    const res = await fetch(url,{
+    const res = await fetch(url, {
       method: 'GET'
     });
     const datos = await res.json();
@@ -32,7 +32,7 @@ async function pedirPartidas() {
     if (res.ok) {
       const partidas = datos.mensaje;
       partidas.forEach(p => {
-        const puntajeTexto=`${p.puntajeJugador} - ${p.puntajeRival}`;
+        const puntajeTexto = `${p.puntajeJugador} - ${p.puntajeRival}`;
         contenedor.innerHTML += `
     <li class="partida-item">
       <div class="partida-info">
