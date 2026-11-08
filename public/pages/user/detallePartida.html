@@ -13,20 +13,19 @@
 <body class="paginas fondo">
     <div data-header="volver"></div>
 
-    <!--Seccion que contiene el detalle de la partida-->
     <section class="tarjeta tarjeta-borde-deco borde-deco">
-        <h2>Partida 1</h2>
+        <h2 id="nombrePartida"></h2>
 
         <!--Resultado-->
-        <div class="resultado-box">
+        <div class="resultado-box" >
             <p>
-                <strong>Juan</strong>
-                <span>6</span>
+                <strong id="nombreJugador"></strong>
+                <span id="puntajeJugador"></span>
             </p>
             <span>VS</span>
             <p>
-                <strong>Rival</strong>
-                <span>4</span>
+                <strong id="nombreRival"></strong>
+                <span id="puntajeRival"></span>
             </p>
         </div>
 
@@ -34,25 +33,26 @@
         <ul class="ficha-datos">
             <li>
                 <p >Dificultad</p>
-                <strong>Intermedio</strong>
+                <strong id="dificultad"></strong>
             </li>
             <li>
                 <p >Duración</p>
-                <strong>48 min</strong>
+                <strong id="duracion"></strong>
             </li>
             <li>
                 <p >Superficie</p>
-                <strong>Cancha Sintética</strong>
+                <strong id="tipoCancha"></strong>
             </li>
             <li>
                 <p>Estado</p>
-                <strong>Finalizado</strong>
+                <strong id="estado"></strong>
             </li>
         </ul>
 
     </section>
 
     <script src="../../js/header.js"></script>
+    <script src="../../js/detallePartida.js">  </script>
 </body>
 
 </html>
