@@ -1,29 +1,74 @@
-//Partidas
-const partidas = [
-    { id: 1, nombre: "Partida 1", resultado: "Ganada!", set: "3-1", fecha: "4/10/2026" },
-    { id: 2, nombre: "Partida 2", resultado: "Ganada!", set: "2-1", fecha: "02/10/2026" },
-    { id: 3, nombre: "Partida 3", resultado: "Perdida", set: "2-3", fecha: "24/9/2026" },
-    { id: 4, nombre: "Partida 4", resultado: "Empate", set: "2-2", fecha: "28/9/2026" },
-    { id: 5, nombre: "Partida 5", resultado: "Empate", set: "2-2", fecha: "27/9/2026" }
-];
+let cantidad = 10;
+let fromActual = 0;
 
-
+const usuarioLogueado = JSON.parse(localStorage.getItem('usuarioActual'));
 const contenedor = document.getElementById('lista-partidas');
 
-if (contenedor) {
-    partidas.forEach(p => {
+async function pedirPartidas() {
+  if (usuarioLogueado) {
+    const url = `/api/partidas/usuario/${usuarioLogueado.id}?cantidad=${cantidad}&from=${fromActual}`;
+
+    const res = await fetch(url,{
+      method: 'GET'
+    });
+    const datos = await res.json();
+
+    if (res.ok) {
+      const partidas = datos.mensaje;
+      partidas.forEach(p => {
+        const puntajeTexto=`${p.puntajeJugador} - ${p.puntajeRival}`;
         contenedor.innerHTML += `
     <li class="partida-item">
       <div class="partida-info">
-        <strong>☆ ${p.nombre}</strong>
+        <strong>☆ ${p.nombrePartida}</strong>
         <span class="texto">${p.resultado}</span>
-        <span class="texto">${p.set}</span>
+        <span class="texto">${puntajeTexto}</span>
         <span class="texto">${p.fecha}</span>
       </div>
-      <a href="../user/detallePartida.html" class="ver-detalle">Ver detalle</a>
+      <a href="../user/detallePartida.html?id=${p.idPartida}" class="ver-detalle">Ver detalle</a>
     </li>
   `;
-    });
-} else {
-    console.error("Error, no se encontro 'partidas-list'");
+      });
+
+      fromActual += cantidad;
+    } else {
+      contenedor.innerHTML += `
+    <li class="partida-item">
+      <div class="partida-info">
+        <strong> NO EXISTEN PARTIDAS </strong>
+      </div>
+    </li>
+  `;
+    };
+
+  } else {
+    //si no esta logueado
+    const contenedorMensaje = document.getElementById('contenedor-partidas');
+    contenedorMensaje.innerHTML = `
+            <h2>Debes iniciar sesion para ver las partidas</h2>
+            </div>`;
+
+    setTimeout(() => {
+      window.location.href = '../user/login.html';
+    }, 2000);
+  }
+
 }
+
+
+//al iniciar carga 10 partidas enseguida
+pedirPartidas();
+
+//Si se detecta que sigue scrolleando
+contenedor.addEventListener('scroll', () => {
+  //scrollHeigth: altura total de la lista (las 10 partidas)
+  //scrollTop: lo que se bajo
+  //clientHeight: lo que entra en la caja visible
+
+  //Si faltan 30 pixeles para llegar al final, pide otras 10 partidas
+  if (contenedor.scrollTop + contenedor.clientHeight >= contenedor.scrollHeight - 30) {
+    pedirPartidas();
+  }
+});
+
+
