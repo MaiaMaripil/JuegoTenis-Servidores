@@ -161,3 +161,9 @@ ul {
   background-repeat: repeat-x;
   background-position: top;
 }
+
+.fondo{
+  background-image: url(../assets/img/main_background.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
