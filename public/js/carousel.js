@@ -15,7 +15,7 @@ function Rueda(elemento, hue, targetDeg, lado) {
     var self = this;
 
     for (var i = 0; i < N; i++) {
-        var src = '../../img/marco_jugador.svg';
+        var src = '../../assets/img/marco_jugador.svg';
         this.srcs.push(src);
 
         var boton = document.createElement('button');
