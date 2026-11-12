@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const rutaDatosPartidas = path.join(__dirname, '../data/partidas.json');
 
-//el id usuario la cantidad y el from entran por parametro en req.
+//el id usuario, la cantidad y el from entran por parametro en req.
 const mostrarPartidas = (req, res) => {
     const idUsuarioBuscado = req.params.idUsuario;
     const datosPartidas = JSON.parse(fs.readFileSync(rutaDatosPartidas, 'utf-8'));
@@ -13,11 +13,10 @@ const mostrarPartidas = (req, res) => {
     const inicio = desde;
     const fin = desde + cant;
 
-    let estado = 409;
+    let estado = 404;  //en caso de no encontrar partidas
     let rta = {};
 
     const partidasUsuario = datosPartidas.filter(p => p.idUsuario === idUsuarioBuscado);
-    
 
     if (partidasUsuario.length>0) {
         estado=200;
@@ -37,7 +36,7 @@ const mostrarDetallePartida=(req, res) =>{
     const partidadBuscada=req.params.idPartida;
     const datosPartidas=JSON.parse(fs.readFileSync(rutaDatosPartidas, 'utf-8'));
 
- //   console.log("ID capturado de la URL:", partidadBuscada);
+ 
     const partida=datosPartidas.find(p => String(p.idPartida)=== String(partidadBuscada));
     let estado=200;
     let rta= {};

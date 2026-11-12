@@ -1,24 +1,16 @@
 let cantidad = 10;
-let fromActual=0;
+let fromActual = 0;
+const usuarioLogueado = JSON.parse(localStorage.getItem('usuarioActual'));
+const contenedor = document.getElementById('lista-partidas');
 
 //funcion para inicializar los valores del from cada vez que se ingresa a la pagina
 document.addEventListener('DOMContentLoaded', () => {
   fromActual = 0;
-  const contenedor = document.getElementById('partidas-list');
-
   if (contenedor) {
     contenedor.innerHTML = '';
   }
-
   pedirPartidas(); //primer tanda
-
-
 })
-
-
-
-const usuarioLogueado = JSON.parse(localStorage.getItem('usuarioActual'));
-const contenedor = document.getElementById('lista-partidas');
 
 async function pedirPartidas() {
   if (usuarioLogueado) {
@@ -31,19 +23,20 @@ async function pedirPartidas() {
 
     if (res.ok) {
       const partidas = datos.mensaje;
+
       partidas.forEach(p => {
         const puntajeTexto = `${p.puntajeJugador} - ${p.puntajeRival}`;
+
         contenedor.innerHTML += `
-    <li class="partida-item">
-      <div class="partida-info">
-        <strong>☆ ${p.nombrePartida}</strong>
-        <span class="texto">${p.resultado}</span>
-        <span class="texto">${puntajeTexto}</span>
-        <span class="texto">${p.fecha}</span>
-      </div>
-      <a href="../user/detallePartida.html?id=${p.idPartida}" class="ver-detalle">Ver detalle</a>
-    </li>
-  `;
+        <li class="partida-item">
+          <div class="partida-info">
+            <strong>☆ ${p.nombrePartida}</strong>
+           <span class="texto">${p.resultado}</span>
+           <span class="texto">${puntajeTexto}</span>
+           <span class="texto">${p.fecha}</span>
+          </div>
+          <a href="../user/detallePartida.html?id=${p.idPartida}" class="ver-detalle">Ver detalle</a>
+         </li> `;
       });
 
       fromActual += cantidad;
@@ -53,8 +46,7 @@ async function pedirPartidas() {
       <div class="partida-info">
         <strong> NO EXISTEN PARTIDAS </strong>
       </div>
-    </li>
-  `;
+    </li> `;
     };
 
   } else {
