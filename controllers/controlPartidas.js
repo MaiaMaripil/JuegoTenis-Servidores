@@ -51,4 +51,30 @@ const mostrarDetallePartida=(req, res) =>{
     return res.status(estado).json(rta);
 }
 
-module.exports={mostrarPartidas, mostrarDetallePartida};
+const modificarNombrePartida=(req, res) =>{
+    const partidadBuscada=req.params.idPartida;
+    const datosPartidas=JSON.parse(fs.readFileSync(rutaDatosPartidas, 'utf-8'));
+
+    const {nuevoNombre}=req.body;
+
+    let estado=400;
+    let rta ={};
+
+    if(nuevoNombre){
+        const partida=datosPartidas.find(p => String(p.idPartida)=== String(partidadBuscada));
+        
+        if(partida){
+           partida.nombrePartida= nuevoNombre;
+
+            fs.writeFileSync(rutaDatosPartidas, JSON.stringify(datosPartidas, null, 2), 'utf-8');
+            estado=200;
+            rta={mensaje: 'Nombre modificado con exito'};
+        }else{
+            rta={mensaje:'No se encontro la partida'};
+        }
+    }
+
+    return res.status(estado).json(rta);
+}
+
+module.exports={mostrarPartidas, mostrarDetallePartida, modificarNombrePartida};

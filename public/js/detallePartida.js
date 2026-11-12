@@ -1,10 +1,10 @@
 //Se ejectua cuando se abre el detallePartida.html
+const parametrosURL = new URLSearchParams(window.location.search);
+const idPartida = parametrosURL.get('id');
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const parametrosURL = new URLSearchParams(window.location.search);
-    const idPartida = parametrosURL.get('id');
 
-   // console.log("ID capturado de la URL:", partida);
+    // console.log("ID capturado de la URL:", partida);
     const rta = await fetch(`/api/partidas/detallePartida/${idPartida}`, {
         method: 'GET'
     });
@@ -30,3 +30,50 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
 })
+
+const botonModificar = document.getElementById('boton-modificar-nombre');
+const contenedorNombre = document.getElementById('nombrePartida');
+let nombreActual ='';
+
+botonModificar.addEventListener('click', async () => {
+    nombreActual=contenedorNombre.textContent.trim();
+
+    contenedorNombre.innerHTML = `<input id="nuevoNombre" type="text" placeholder="Nuevo nombre de la partida">
+    <button id="boton-guardar-nombre">Guardar</button>`;
+
+    botonModificar.style.display = 'none'; //se oculta el boton de modificar
+
+
+});
+
+const botonGuardar = document.getElementById('boton-guardar-nombre')
+
+contenedorNombre.addEventListener('click', async () => {
+    const inputNuevoNombre = document.getElementById('nuevoNombre');
+    const nuevoNombre = inputNuevoNombre.value.trim();
+
+    if (nuevoNombre) {
+        const rta = await fetch(`/api/partidas/modificarNombre/${idPartida}`, {
+            method: 'PUT',
+            headers:{'Content-Type': 'application/json'},
+            body: JSON.stringify({ nombrePartida: nuevoNombre })
+        });
+
+        if (rta.ok) {
+            contenedorNombre.textContent = nuevoNombre;
+            botonModificar.style.display='inline-block';
+        } else {
+            const contenedorMensaje = document.getElementById('contenedorMensaje');
+            contenedorMensaje.textContent = 'No se pudo modificar'
+            contenedorNombre.textContent = nombreActual ;
+
+
+            setTimeout(() => {
+                contenedorMensaje.style.display = 'none';
+                botonModificar.style.display='inline-block';
+            }, 2000);
+
+        }
+    }
+})
+
