@@ -110,7 +110,7 @@
         "nombrePartida": "Partida 9",
         "fecha": "19-08-2026",
         "resultado": "PERDIDA",
-        "puntaje":"2",
+        "puntajeJugador":"2",
         "puntajeRival":"1",
         "dificultad": "",
         "duracion": "",

@@ -84,5 +84,47 @@
         "zapato": "zapato-basico"
       }
     }
+  },
+  {
+    "id": "6f3eab8b-c3a9-450d-a300-7d35b68db94a",
+    "nombre": "carol",
+    "nombreUsuario": "caro123",
+    "email": "caro@gmail.com",
+    "password": "micontrasenia",
+    "agilidad": 0,
+    "golpe": 0,
+    "inventario": {
+      "guantes": [
+        "guante-basico"
+      ],
+      "zapatos": [
+        "zapato-basico"
+      ],
+      "equipados": {
+        "guante": "guante-basico",
+        "zapato": "zapato-basico"
+      }
+    }
+  },
+  {
+    "id": "28aeecae-7958-4b07-a01f-25ad04b636f5",
+    "nombre": "Martin",
+    "nombreUsuario": "martin123",
+    "email": "martin@yahoo.com",
+    "password": "123456789",
+    "agilidad": 0,
+    "golpe": 0,
+    "inventario": {
+      "guantes": [
+        "guante-basico"
+      ],
+      "zapatos": [
+        "zapato-basico"
+      ],
+      "equipados": {
+        "guante": "guante-basico",
+        "zapato": "zapato-basico"
+      }
+    }
   }
 ]

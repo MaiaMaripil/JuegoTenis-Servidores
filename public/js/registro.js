@@ -12,7 +12,7 @@ botonRegistrar.addEventListener('click', async (e) => {
     }
 
 
-    //Se mandan los datos al servidor con fetch
+    //Se envia la peticion al servidor
     const respuesta = await fetch('/api/usuarios/registro', {
         method: 'POST',
         headers: {
@@ -39,6 +39,7 @@ botonRegistrar.addEventListener('click', async (e) => {
         //Para que quede el mensaje unos segundos
         setTimeout(() => {
         mensajeEstado.textContent = '';
+        window.location.href = 'login.html'
       }, 3000);
     }
 
