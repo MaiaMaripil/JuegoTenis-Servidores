@@ -3,6 +3,7 @@ const app = express(); //inicializar
 
 app.use(express.json());
 app.use(express.static('public'));
+app.use('/data', express.static('data'));
 
 const usuariosRoutes = require('./routes/rutaUsuarios');
 const partidasRoutes=require('./routes/rutaPartidas')

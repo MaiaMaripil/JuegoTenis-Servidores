@@ -73,14 +73,20 @@
 }
 
 .inventario-item{
-    position:absolute;
-    border:0;
-    padding:0;
-    cursor:pointer;
-    background-color:var(--color-base-primario);
+    position: absolute;
+    box-sizing: border-box;
+
+    border: 10px solid transparent;
+    border-image: url("../assets/img/marco_obj_inventario.svg") 30 round;
+
+    padding: 0;
+    cursor: pointer;
+    background-color: var(--color-base-primario);
+
     transform-origin:center;
     transition:opacity .03s;
 }
+
 .inventario-item img{
     display:block;
     width:100%;
