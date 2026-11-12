@@ -27,7 +27,9 @@ botonRegistrar.addEventListener('click', async (e) => {
     if (!respuesta.ok) {
         //si hubo errores
         mensajeEstado.style.color = 'red';
-        mensajeEstado.textContent = resultado.errorers ? resultado.errorers.map(error=> error.msg).join(','): resultado.error;
+        mensajeEstado.textContent = Array.isArray(resultado.errores)
+            ? resultado.errores.map(error => error.msg).join(', ')
+            : resultado.error || 'No se pudo registrar el usuario';
     } else {
         mensajeEstado.style.color = 'yellow';
         mensajeEstado.textContent = resultado.mensaje;

@@ -3,7 +3,7 @@ const headers = {
         <header class="delimitador_deco">
             <div>
                 <a class="home-link home-link-angel" href="../../index.html">
-                    <img src="../../img/nav_angel_icon.svg" alt="Ir al inicio">
+                    <img src="../../assets/img/nav_angel_icon.svg" alt="Ir al inicio">
                 </a>
             </div>
         </header>

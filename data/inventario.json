@@ -4,24 +4,24 @@
     {
       "id": "guante-basico",
       "nombre": "Guante básico",
-      "imagen": "../../img/marco_jugador.svg"
+      "imagen": "../../assets/img/marco_jugador.svg"
     },
     {
       "id": "guante-rojo",
       "nombre": "Guante rojo",
-      "imagen": "../../img/marco_jugador.svg"
+      "imagen": "../../assets/img/marco_jugador.svg"
     }
   ],
   "zapatos": [
     {
       "id": "zapato-basico",
       "nombre": "Zapato básico",
-      "imagen": "../../img/marco_jugador.svg"
+      "imagen": "../../assets/img/marco_jugador.svg"
     },
     {
       "id": "zapato-azul",
       "nombre": "Zapato azul",
-      "imagen": "../../img/marco_jugador.svg"
+      "imagen": "../../assets/img/marco_jugador.svg"
     }
   ]
 }

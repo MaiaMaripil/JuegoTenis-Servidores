@@ -15,5 +15,5 @@ if (usuarioGuardado) {
     agilidad.textContent = `Agilidad: ${usuario.agilidad ?? 0}`;
     golpe.textContent = `Golpe: ${usuario.golpe ?? 0}`;
     
-    foto.src = "../../img/foto_usuario.gif"; /* cambiamos la foto del perfil del usuario que ya inicio sesion */
+    foto.src = "../../assets/img/foto_usuario.gif"; /* cambiamos la foto del perfil del usuario que ya inicio sesion */
 }

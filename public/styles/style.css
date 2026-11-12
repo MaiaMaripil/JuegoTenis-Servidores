@@ -91,7 +91,7 @@ html,body {
   background-clip: padding-box;
 
   border: clamp(28px, 9vw, 90px) solid transparent;
-  border-image-source: url("../img/marco.svg");
+  border-image-source: url("../assets/img/marco.svg");
   border-image-slice: 48;
   border-image-repeat: round;
   
@@ -156,8 +156,14 @@ ul {
 /* es para la decoraciones de headers y footers */
 .delimitador_deco{
   min-height: 80px;
-  background-image: url(../img/top_bottom_deco.svg);
+  background-image: url(../assets/img/top_bottom_deco.svg);
   background-size: 10%;
   background-repeat: repeat-x;
   background-position: top;
+}
+
+.fondo{
+  background-image: url(../assets/img/main_background.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }

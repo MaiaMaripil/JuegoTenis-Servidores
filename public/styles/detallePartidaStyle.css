@@ -34,9 +34,3 @@
 #texto {
   margin-left: 30px;
 }
-
-.fondo{
-  background-image: url(../img/main_background.svg);
-  background-size: cover;
-  background-repeat: no-repeat;
-}

@@ -9,10 +9,12 @@
     "golpe": 0,
     "inventario": {
       "guantes": [
-        "guante-basico"
+        "guante-basico",
+        "guante-rojo"
       ],
       "zapatos": [
-        "zapato-basico"
+        "zapato-basico",
+        "zapato-azul"
       ],
       "equipados": {
         "guante": "guante-basico",

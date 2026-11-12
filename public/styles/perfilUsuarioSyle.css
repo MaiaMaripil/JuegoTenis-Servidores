@@ -7,7 +7,7 @@
     height: clamp(100px, 14vw, 170px);
 
     background-color: transparent;
-    background-image: url("../img/marco_jugador.svg");
+    background-image: url("../assets/img/marco_jugador.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -22,7 +22,7 @@
 .tarjeta-perfil{
     
     background-color: transparent;
-    background-image: url(../img/patron_fondo.svg);
+    background-image: url(../assets/img/patron_fondo.svg);
     background-repeat: repeat-x;
     background-size: contain;
 
@@ -73,14 +73,20 @@
 }
 
 .inventario-item{
-    position:absolute;
-    border:0;
-    padding:0;
-    cursor:pointer;
-    background-color:var(--color-base-primario);
+    position: absolute;
+    box-sizing: border-box;
+
+    border: 10px solid transparent;
+    border-image: url("../assets/img/marco_obj_inventario.svg") 30 round;
+
+    padding: 0;
+    cursor: pointer;
+    background-color: var(--color-base-primario);
+
     transform-origin:center;
     transition:opacity .03s;
 }
+
 .inventario-item img{
     display:block;
     width:100%;

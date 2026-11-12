@@ -1,12 +1,38 @@
-const usuario = JSON.parse(localStorage.getItem("usuarioActual"));
+/***
+ * Codigo para mostrar el inventario del usuario en su perfil 
+*/
 
-var N = 24;
-var STEP = 360 / N;
+// Obtenemos los datos del usuario
+const datosGuardados = localStorage.getItem("usuarioActual");
+const usuario = datosGuardados ? JSON.parse(datosGuardados) : null;
 
-function Rueda(elemento, hue, targetDeg, lado) {
+// Cargamos el inverntario del juego
+async function cargarInventario() {
+    const respuesta = await fetch("/data/inventario.json");
+    if (!respuesta.ok) {
+        throw new Error("No se pudo cargar el archivo de inventario");
+    }
+    return respuesta.json();
+}
+
+function obtenerObjetosUsuario(catalogo, categoria) {
+    const idsUsuario = usuario?.inventario?.[categoria] ?? [];
+    const objetosCatalogo = catalogo[categoria] ?? [];
+
+    return idsUsuario
+        .map(function (id) {
+            return objetosCatalogo.find(function (objeto) {
+                return objeto.id === id;
+            });
+        })
+        .filter(Boolean);
+}
+
+function Rueda(elemento, targetDeg, lado, objetos) {
     this.elemento = elemento;
     this.target = targetDeg;
     this.lado = lado;
+    this.total = objetos.length;
     this.pos = 0;
     this.posSeleccionado = 0;
     this.srcs = [];
@@ -14,29 +40,30 @@ function Rueda(elemento, hue, targetDeg, lado) {
 
     var self = this;
 
-    for (var i = 0; i < N; i++) {
-        var src = '../../img/marco_jugador.svg';
+    objetos.forEach(function (objeto, i) {
+        var src = objeto.imagen;
         this.srcs.push(src);
 
         var boton = document.createElement('button');
         boton.className = 'inventario-item';
-        boton.setAttribute('aria-label', 'Item ' + (i + 1));
+        boton.setAttribute('aria-label', objeto.nombre);
 
         var im = document.createElement('img');
         im.src = src;
-        im.alt = 'Imagen de guante';
+        im.alt = objeto.nombre;
         boton.appendChild(im);
 
         (function (indice) {
             boton.addEventListener('click', function () {
-                var d = ((indice - self.pos) % N + N * 1.5) % N - N / 2;
+                var d = ((indice - self.pos) % self.total + self.total * 1.5) %
+                    self.total - self.total / 2;
                 self.posSeleccionado = Math.round(self.pos + d);
             });
         })(i);
 
         elemento.appendChild(boton);
         this.items.push(boton);
-    }
+    }, this);
 
     elemento.parentNode.addEventListener('wheel', function (e) {
         var st = elemento.parentNode.getBoundingClientRect();
@@ -52,46 +79,58 @@ function Rueda(elemento, hue, targetDeg, lado) {
 }
 
 Rueda.prototype.layout = function (W, H) {
-        var cx = this.lado === 'l' ? W * 0.08 : W * 0.92;
-        var cy = H / 2;
-        var R = Math.min(W * 0.20, H * 0.60);
+    var cx = this.lado === 'l' ? W * 0.08 : W * 0.92;
+    var cy = H / 2;
+    var R = Math.min(W * 0.20, H * 0.60);
 
-        this.elemento.style.transform = 'translate(' + cx + 'px,' + cy + 'px)';
+    this.elemento.style.transform = 'translate(' + cx + 'px,' + cy + 'px)';
 
-        var base = Math.max(34, Math.min(60, R * 0.3));
+    var base = Math.max(34, Math.min(60, R * 0.3));
 
-        for (var i = 0; i < N; i++) {
-            var d = ((i - this.pos) % N + N * 1.5) % N - N / 2;
-            var a = (this.target + d * STEP) * Math.PI / 180;
-            var near = Math.max(0, 1 - Math.abs(d) / 1.6);
-            var size = base * (1 + 0.7 * near);
-            var item = this.items[i];
-            var visible = this.lado === 'l'? Math.cos(a) >= 0 : Math.cos(a) <= 0;
+    for (var i = 0; i < this.items.length; i++) {
+        var d = ((i - this.pos) % this.total + this.total * 1.5) %
+            this.total - this.total / 2;
+        var step = 360 / this.total;
+        var a = (this.target + d * step) * Math.PI / 180;
+        var near = Math.max(0, 1 - Math.abs(d) / 1.6);
+        var size = base * (1 + 0.7 * near);
+        var item = this.items[i];
+        var visible = this.lado === 'l'? Math.cos(a) >= 0 : Math.cos(a) <= 0;
 
-            item.style.width = size + 'px';
-            item.style.height = size + 'px';
-            item.style.left = (R * Math.cos(a) - size / 2) + 'px';
-            item.style.top = (R * Math.sin(a) - size / 2) + 'px';
-            item.style.zIndex = Math.round(near * 10);
-            item.style.opacity = visible
-                ? 0.45 + 0.55 * Math.max(near, 1 - Math.abs(d) / (N / 2))
-                : 0;
-            item.style.pointerEvents = visible ? 'auto' : 'none';
-            item.style.outline = near > 0.9 ? '2px solid #fff' : 'none';
-        }
+        item.style.width = size + 'px';
+        item.style.height = size + 'px';
+        item.style.left = (R * Math.cos(a) - size / 2) + 'px';
+        item.style.top = (R * Math.sin(a) - size / 2) + 'px';
+        item.style.zIndex = Math.round(near * 10);
+        item.style.opacity = visible
+            ? 0.45 + 0.55 * Math.max(near, 1 - Math.abs(d) / (this.total / 2))
+            : 0;
+        item.style.pointerEvents = visible ? 'auto' : 'none';
+        item.style.outline = near > 0.9 ? '2px solid #fff' : 'none';
+    }
 };
 
-function iniciarCarrusel() {
-        var inventario = document.getElementById('inventario');
-        var ruedaIzquierda = document.getElementById('rueda-izq');
-        var ruedaDerecha = document.getElementById('rueda-der');
+async function iniciarCarrusel() {
+    var inventario = document.getElementById('inventario');
+    var ruedaIzquierda = document.getElementById('rueda-izq');
+    var ruedaDerecha = document.getElementById('rueda-der');
 
-        if (!inventario || !ruedaIzquierda || !ruedaDerecha) {
+    if (!inventario || !ruedaIzquierda || !ruedaDerecha) {
+        return;
+    }
+
+    try {
+        var catalogo = await cargarInventario();
+        var zapatos = obtenerObjetosUsuario(catalogo, 'zapatos');
+        var guantes = obtenerObjetosUsuario(catalogo, 'guantes');
+
+        if (!zapatos.length && !guantes.length) {
+            console.error('El usuario no tiene objetos en su inventario');
             return;
         }
 
-        var izquierda = new Rueda(ruedaIzquierda, 20, 0, 'l');
-        var derecha = new Rueda(ruedaDerecha, 200, 180, 'r');
+        var izquierda = new Rueda(ruedaIzquierda, 0, 'l', zapatos);
+        var derecha = new Rueda(ruedaDerecha, 180, 'r', guantes);
 
         document.addEventListener('keydown', function (e) {
             if (e.key === 'ArrowLeft') izquierda.posSeleccionado--;
@@ -117,10 +156,13 @@ function iniciarCarrusel() {
         }
 
         frame();
+    } catch (error) {
+        console.error('No se pudo iniciar el inventario:', error);
+    }
 }
 
 if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', iniciarCarrusel);
+    document.addEventListener('DOMContentLoaded', iniciarCarrusel);
 } else {
-        iniciarCarrusel();
+    iniciarCarrusel();
 }
