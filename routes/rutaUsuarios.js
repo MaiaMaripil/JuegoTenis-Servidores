@@ -3,9 +3,6 @@ const router = express.Router();
 //importar la funcion del controlador
 const {registrarUsuario, verificarLogin} = require('../controllers/controlUsuarios');
 
-// /api/usuarios/login
-router.post('/login', verificarLogin);
-
 /* Se utiliza express-validator para validar los datos de usuarios desde el backend */
 const {body, validationResult} = require('express-validator');
 

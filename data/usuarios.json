@@ -126,5 +126,26 @@
         "zapato": "zapato-basico"
       }
     }
+  },
+  {
+    "id": "08ec68ce-de9d-48fc-80e1-9864f1fd3cba",
+    "nombre": "pepe",
+    "nombreUsuario": "pepe",
+    "email": "pepe@gmail.com",
+    "password": "1234567890",
+    "agilidad": 0,
+    "golpe": 0,
+    "inventario": {
+      "guantes": [
+        "guante-basico"
+      ],
+      "zapatos": [
+        "zapato-basico"
+      ],
+      "equipados": {
+        "guante": "guante-basico",
+        "zapato": "zapato-basico"
+      }
+    }
   }
 ]

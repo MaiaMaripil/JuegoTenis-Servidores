@@ -2,13 +2,16 @@
  * Codigo para mostrar el inventario del usuario en su perfil 
 */
 
+//todo: mostrar detalles de los item del inventario
+//todo: permitir seleccionar q item equipar
+
 // Obtenemos los datos del usuario
-const datosGuardados = localStorage.getItem("usuarioActual");
-const usuario = datosGuardados ? JSON.parse(datosGuardados) : null;
+const datosGuardados = localStorage.getItem("usuarioActual"); 
+const usuario = datosGuardados ? JSON.parse(datosGuardados) : null; 
 
 // Cargamos el inverntario del juego
 async function cargarInventario() {
-    const respuesta = await fetch("/data/inventario.json");
+    const respuesta = await fetch("/data/inventario.json"); // todo: tiene que traer datos de a tandas
     if (!respuesta.ok) {
         throw new Error("No se pudo cargar el archivo de inventario");
     }
