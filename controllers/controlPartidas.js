@@ -14,7 +14,7 @@ const mostrarPartidas = (req, res) => {
     const fin = desde + cant;
 
     let estado = 404;  //en caso de no encontrar partidas
-    let rta = {};
+    let rta = { mensaje: 'error'};
 
     const partidasUsuario = datosPartidas.filter(p => p.idUsuario === idUsuarioBuscado);
 
@@ -25,9 +25,7 @@ const mostrarPartidas = (req, res) => {
             totalPartidas: partidasUsuario.length,
             mensaje: partidasPorCant
         }
-    } else {
-        rta = { mensaje: 'error' };
-    }
+    } 
 
     return res.status(estado).json(rta);
 }
@@ -35,16 +33,15 @@ const mostrarPartidas = (req, res) => {
 const mostrarDetallePartida=(req, res) =>{
     const partidadBuscada=req.params.idPartida;
     const datosPartidas=JSON.parse(fs.readFileSync(rutaDatosPartidas, 'utf-8'));
-
  
     const partida=datosPartidas.find(p => String(p.idPartida)=== String(partidadBuscada));
-    let estado=200;
-    let rta= {};
+
+    let estado=404;
+    let rta= {mensaje: 'Partida no encontrada'};
+
     if(partida){
+        estado=200;
         rta={mensaje: partida};
-    }else{
-        estado=404;
-        rta={mensaje: 'Partida no encontrada'};
     }
 
     return res.status(estado).json(rta);
@@ -54,13 +51,14 @@ const modificarNombrePartida=(req, res) =>{
     const partidadBuscada=req.params.idPartida;
     const datosPartidas=JSON.parse(fs.readFileSync(rutaDatosPartidas, 'utf-8'));
 
-    const {nuevoNombre}=req.body;
+    const nuevoNombre=req.body.nombrePartida;
 
-    let estado=400;
-    let rta ={};
+    let estado=404;
+    let rta ={mensaje:'No se encontro la partida'};
 
     if(nuevoNombre){
         const partida=datosPartidas.find(p => String(p.idPartida)=== String(partidadBuscada));
+        console.log("se encontro la partida")
         
         if(partida){
            partida.nombrePartida= nuevoNombre;
@@ -68,9 +66,10 @@ const modificarNombrePartida=(req, res) =>{
             fs.writeFileSync(rutaDatosPartidas, JSON.stringify(datosPartidas, null, 2), 'utf-8');
             estado=200;
             rta={mensaje: 'Nombre modificado con exito'};
-        }else{
-            rta={mensaje:'No se encontro la partida'};
         }
+    }else{
+        estado=400;
+        rta={mensaje: 'Nombre no valido'};
     }
 
     return res.status(estado).json(rta);
