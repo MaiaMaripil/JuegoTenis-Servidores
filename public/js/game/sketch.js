@@ -21,7 +21,6 @@ async function setup() {
 }
 
 function draw() {
-
   dibujarPasillo();
 
   circle(punto_fuga.x, punto_fuga.y,5);
