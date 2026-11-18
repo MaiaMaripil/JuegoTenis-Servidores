@@ -10,11 +10,19 @@
     "inventario": {
       "guantes": [
         "guante-1",
-        "guante-2"
+        "guante-2",
+        "guante-3",
+        "guante-4",
+        "guante-5",
+        "guante-6",
+        "guante-7",
+        "guante-8"
       ],
       "zapatos": [
         "zapato-1",
-        "zapato-2"
+        "zapato-2",
+        "zapato-3",
+        "zapato-4"
       ],
       "equipados": {
         "guante": "guante-1",
