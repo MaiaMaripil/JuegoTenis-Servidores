@@ -6,29 +6,20 @@
 //todo: permitir seleccionar q item equipar
 
 // Obtenemos los datos del usuario
-const datosGuardados = localStorage.getItem("usuarioActual"); 
-const usuario = datosGuardados ? JSON.parse(datosGuardados) : null; 
+const usuario = JSON.parse(localStorage.getItem('usuarioActual'));
 
-// Cargamos el inverntario del juego
-async function cargarInventario() {
-    const respuesta = await fetch("/data/inventario.json"); // todo: tiene que traer datos de a tandas
-    if (!respuesta.ok) {
-        throw new Error("No se pudo cargar el archivo de inventario");
+async function cargarInventario(){
+    if(!usuario){
+        throw new Error('No hay un usuario activo');
     }
+
+    const respuesta = await fetch(`/api/inventario/usuario/${usuario.id}`);
+
+    if(!respuesta.ok){
+        throw new Error('No se pudo obtener el inventario');
+    }
+
     return respuesta.json();
-}
-
-function obtenerObjetosUsuario(catalogo, categoria) {
-    const idsUsuario = usuario?.inventario?.[categoria] ?? [];
-    const objetosCatalogo = catalogo[categoria] ?? [];
-
-    return idsUsuario
-        .map(function (id) {
-            return objetosCatalogo.find(function (objeto) {
-                return objeto.id === id;
-            });
-        })
-        .filter(Boolean);
 }
 
 function Rueda(elemento, targetDeg, lado, objetos) {
@@ -123,9 +114,9 @@ async function iniciarCarrusel() {
     }
 
     try {
-        var catalogo = await cargarInventario();
-        var zapatos = obtenerObjetosUsuario(catalogo, 'zapatos');
-        var guantes = obtenerObjetosUsuario(catalogo, 'guantes');
+        const inventarioUsuario = await cargarInventario();
+        const zapatos = inventarioUsuario.zapatos;
+        const guantes = inventarioUsuario.guantes;
 
         if (!zapatos.length && !guantes.length) {
             console.error('El usuario no tiene objetos en su inventario');

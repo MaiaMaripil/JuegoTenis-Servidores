@@ -6,9 +6,11 @@ app.use(express.static('public'));
 app.use('/data', express.static('data'));
 
 const usuariosRoutes = require('./routes/rutaUsuarios');
-const partidasRoutes=require('./routes/rutaPartidas')
+const partidasRoutes=require('./routes/rutaPartidas');
+const inventarioRoutes = require('./routes/rutaInventario');
 app.use('/api/usuarios', usuariosRoutes);
 app.use('/api/partidas', partidasRoutes);
+app.use('/api/inventario', inventarioRoutes);
 
 
 const PORT = 3001;
