@@ -95,6 +95,17 @@
     border-radius:3px
 }
 
+.inventario-espacio-vacio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--color-acento);
+    font-size: clamp(24px, 4vw, 48px);
+    font-weight: 700;
+    opacity: 0.65;
+}
+
 .etiqueta{
     position:absolute;
     top:50%;

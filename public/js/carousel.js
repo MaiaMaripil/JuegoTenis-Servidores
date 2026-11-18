@@ -22,11 +22,20 @@ async function cargarInventario(){
     return respuesta.json();
 }
 
-function Rueda(elemento, targetDeg, lado, objetos) {
+function Rueda(elemento, targetDeg, lado, objetos, capacidad) {
     this.elemento = elemento;
     this.target = targetDeg;
     this.lado = lado;
-    this.total = objetos.length;
+
+    var objetosAMostrar = objetos.slice();
+    while (objetosAMostrar.length < capacidad) {
+        objetosAMostrar.push({
+            vacio: true,
+            nombre: 'Espacio disponible'
+        });
+    }
+
+    this.total = objetosAMostrar.length;
     this.pos = 0;
     this.posSeleccionado = 0;
     this.srcs = [];
@@ -34,18 +43,23 @@ function Rueda(elemento, targetDeg, lado, objetos) {
 
     var self = this;
 
-    objetos.forEach(function (objeto, i) {
-        var src = objeto.imagen;
-        this.srcs.push(src);
-
+    objetosAMostrar.forEach(function (objeto, i) {
         var boton = document.createElement('button');
-        boton.className = 'inventario-item';
         boton.setAttribute('aria-label', objeto.nombre);
 
-        var im = document.createElement('img');
-        im.src = src;
-        im.alt = objeto.nombre;
-        boton.appendChild(im);
+        if (objeto.vacio) {
+            boton.className = 'inventario-item inventario-espacio-vacio';
+            boton.innerHTML = '<span aria-hidden="true">+</span>';
+        } else {
+            var src = objeto.imagen;
+            this.srcs.push(src);
+
+            boton.className = 'inventario-item';
+            var im = document.createElement('img');
+            im.src = src;
+            im.alt = objeto.nombre;
+            boton.appendChild(im);
+        }
 
         (function (indice) {
             boton.addEventListener('click', function () {
@@ -118,13 +132,8 @@ async function iniciarCarrusel() {
         const zapatos = inventarioUsuario.zapatos;
         const guantes = inventarioUsuario.guantes;
 
-        if (!zapatos.length && !guantes.length) {
-            console.error('El usuario no tiene objetos en su inventario');
-            return;
-        }
-
-        var izquierda = new Rueda(ruedaIzquierda, 0, 'l', zapatos);
-        var derecha = new Rueda(ruedaDerecha, 180, 'r', guantes);
+        var izquierda = new Rueda(ruedaIzquierda, 0, 'l', zapatos, 10);
+        var derecha = new Rueda(ruedaDerecha, 180, 'r', guantes, 10);
 
         document.addEventListener('keydown', function (e) {
             if (e.key === 'ArrowLeft') izquierda.posSeleccionado--;
