@@ -2,9 +2,6 @@
  * Codigo para mostrar el inventario del usuario en su perfil 
 */
 
-//todo: mostrar detalles de los item del inventario
-//todo: permitir seleccionar q item equipar
-
 // Obtenemos los datos del usuario
 const usuario = JSON.parse(localStorage.getItem('usuarioActual'));
 
@@ -21,6 +18,8 @@ async function cargarInventario(){
 
     return respuesta.json();
 }
+
+var guanteSeleccionado, zapatoSeleccionado;
 
 function Rueda(elemento, targetDeg, lado, objetos, capacidad) {
     this.elemento = elemento;
@@ -177,6 +176,12 @@ async function iniciarCarrusel() {
                 }
                 rueda.layout(W, H);
                 actualizarDetalleInventario(rueda);
+                
+                const zapato = izquierda.obtenerSeleccionado();
+                const guante = derecha.obtenerSeleccionado();
+                
+                zapatoSeleccionado = zapato.vacio ? null : zapato.id;
+                guanteSeleccionado = guante.vacio ? null : guante.id;
             });
 
             requestAnimationFrame(frame);
@@ -192,4 +197,41 @@ if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', iniciarCarrusel);
 } else {
     iniciarCarrusel();
+}
+
+// EQUIPAR ITEMS SELECCIONADOS
+async function equiparItems() {
+    const msj = document.getElementById('mensaje-equipar').textContent;
+    if (zapatoSeleccionado == null || guanteSeleccionado == null) {
+        msj = 'Selecciona un zapato y un guante antes de equipar.';
+        return;
+    }
+
+    try {
+        const respuesta = await fetch(`/api/inventario/usuario/${usuario.id}/equipar`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                zapato: zapatoSeleccionado,
+                guante: guanteSeleccionado
+            })
+        });
+
+        const resultado = await respuesta.json();
+
+        if (!respuesta.ok) {
+            throw new Error(resultado.error);
+        }
+
+        usuario.inventario = usuario.inventario || {};
+        usuario.inventario.equipados = resultado.equipados;
+        
+        //localStorage.setItem('usuarioActual', JSON.stringify(usuario));
+        msj = 'Items equipados correctamente.';
+    } catch (error) {
+        console.error('No se pudieron equipar los items:', error);
+        msj = error.message;
+    }
 }

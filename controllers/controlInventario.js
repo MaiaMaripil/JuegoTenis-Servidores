@@ -37,4 +37,26 @@ const obtenerInventarioUsuario = (req, res) =>{
     });
 };
 
-module.exports = { obtenerInventarioUsuario };
+const equiparItemsUsuario = (req, res) => {
+    const { idUsuario } = req.params;
+    const { guante, zapato } = req.body;
+
+    const usuarios = JSON.parse(fs.readFileSync(rutaDatosUsuario, 'utf-8'));
+    const usuario = usuarios.find(usuarioActual =>
+        String(usuarioActual.id) === String(idUsuario)
+    );
+
+    if (!usuario) {
+        return res.status(404).json({ error: 'Usuario no encontrado' });
+    }
+
+    usuario.inventario.equipados = { guante, zapato };
+    fs.writeFileSync(rutaDatosUsuario, JSON.stringify(usuarios, null, 2));
+
+    return res.status(200).json({
+        mensaje: 'Items equipados correctamente',
+        equipados: usuario.inventario.equipados
+    });
+};
+
+module.exports = { obtenerInventarioUsuario, equiparItemsUsuario };
