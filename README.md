@@ -6,6 +6,17 @@ Juego web que recrea los orígenes del tenis en el siglo XII en Francia, cuando 
 
 Este proyecto universitario propone una experiencia inmersiva combinando historia y tecnología. A través de la cámara web del dispositivo, el juego detecta los movimientos físicos del jugador, permitiéndole golpear la pelota y desplazarse en tiempo real. 
 
+## Capturas de pantalla
+
+### Página inicio
+![Página de inicio](./docs/screenshots/captura_pantallaprincipal.png)
+
+### Página de partidas
+![Página de partidas](./docs/screenshots/captura_partidas.png)
+
+### Página de perfil del usuario
+![Página de perfil](./docs/screenshots/captura_perfil.png)
+
 ## Tecnologías
 
 - **HTML5**: Estructura del juego y de la interfaz.
