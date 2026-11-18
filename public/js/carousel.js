@@ -35,6 +35,7 @@ function Rueda(elemento, targetDeg, lado, objetos, capacidad) {
         });
     }
 
+    this.objetos = objetosAMostrar;
     this.total = objetosAMostrar.length;
     this.pos = 0;
     this.posSeleccionado = 0;
@@ -118,6 +119,28 @@ Rueda.prototype.layout = function (W, H) {
     }
 };
 
+Rueda.prototype.obtenerSeleccionado = function () {
+    var indice = Math.round(this.posSeleccionado);
+    indice = ((indice % this.total) + this.total) % this.total;
+    return this.objetos[indice];
+};
+
+function actualizarDetalleInventario(rueda) {
+    var objeto = rueda.obtenerSeleccionado();
+
+    if (rueda.lado === 'l') {
+        document.getElementById('nombre-zapato-seleccionado').textContent =
+            objeto.vacio ? 'Espacio disponible' : objeto.nombre;
+        document.getElementById('agilidad-zapato-seleccionado').textContent =
+            objeto.vacio ? 'Agilidad: -' : `Agilidad: ${objeto.agilidad ?? '-'}`;
+    } else {
+        document.getElementById('nombre-guante-seleccionado').textContent =
+            objeto.vacio ? 'Espacio disponible' : objeto.nombre;
+        document.getElementById('golpe-guante-seleccionado').textContent =
+            objeto.vacio ? 'Golpe: -' : `Golpe: ${objeto.golpe ?? '-'}`;
+    }
+}
+
 async function iniciarCarrusel() {
     var inventario = document.getElementById('inventario');
     var ruedaIzquierda = document.getElementById('rueda-izq');
@@ -153,6 +176,7 @@ async function iniciarCarrusel() {
                     rueda.pos = rueda.posSeleccionado;
                 }
                 rueda.layout(W, H);
+                actualizarDetalleInventario(rueda);
             });
 
             requestAnimationFrame(frame);

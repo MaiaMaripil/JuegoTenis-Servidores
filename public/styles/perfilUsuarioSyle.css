@@ -106,6 +106,58 @@
     opacity: 0.65;
 }
 
+.detalle-inventario {
+    position: absolute;
+    z-index: 20;
+    left: 50%;
+    top: 50%;
+    width: clamp(170px, 28%, 260px);
+    min-height: 130px;
+    transform: translate(-50%, -50%);
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.detalle-item {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    min-width: 0;
+    padding: 10px;
+    text-align: center;
+
+    color: var(--color-base-secundario);
+    background-color: var(--color-base-primario);
+    border: 1px solid var(--color-secundario);
+}
+
+.detalle-item h3 {
+    margin: 0;
+    color: var(--color-acento);
+    font-size: clamp(12px, 1.5vw, 16px);
+}
+
+.detalle-item strong {
+    overflow-wrap: anywhere;
+    font-size: clamp(11px, 1.3vw, 14px);
+}
+
+.detalle-item span {
+    font-size: clamp(11px, 1.2vw, 13px);
+}
+
+.detalle-zapatos {
+    order: 1;
+}
+
+.detalle-guantes {
+    order: 2;
+}
+
 .etiqueta{
     position:absolute;
     top:50%;
