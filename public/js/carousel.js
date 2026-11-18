@@ -201,9 +201,9 @@ if (document.readyState === 'loading') {
 
 // EQUIPAR ITEMS SELECCIONADOS
 async function equiparItems() {
-    const msj = document.getElementById('mensaje-equipar').textContent;
+    const msj = document.getElementById('mensaje-equipar');
     if (zapatoSeleccionado == null || guanteSeleccionado == null) {
-        msj = 'Selecciona un zapato y un guante antes de equipar.';
+        msj.textContent = 'Selecciona un zapato y un guante antes de equipar.';
         return;
     }
 
@@ -226,12 +226,26 @@ async function equiparItems() {
         }
 
         usuario.inventario = usuario.inventario || {};
-        usuario.inventario.equipados = resultado.equipados;
         
-        //localStorage.setItem('usuarioActual', JSON.stringify(usuario));
-        msj = 'Items equipados correctamente.';
+        // actualizo el localStorage para que concuerde con la info del servidor
+        usuario.inventario.equipados = resultado.equipados;
+        usuario.golpe = resultado.golpe;
+        usuario.agilidad = resultado.agilidad;
+        localStorage.setItem('usuarioActual', JSON.stringify(usuario));
+        
+        msj.textContent = 'Items equipados correctamente.';
+
+        actualizarEstadisticas(resultado);
     } catch (error) {
         console.error('No se pudieron equipar los items:', error);
-        msj = error.message;
+        msj.textContent = error.message;
     }
+}
+
+function actualizarEstadisticas(estadisticas){
+    const agilidad = document.getElementById("agilidad_usuario");
+    const golpe = document.getElementById("golpe_usuario");
+
+    agilidad.textContent = `Agilidad: ${estadisticas.agilidad}`;
+    golpe.textContent = `Golpe: ${estadisticas.golpe}`;
 }
