@@ -9,16 +9,16 @@
     "golpe": 0,
     "inventario": {
       "guantes": [
-        "guante-basico",
-        "guante-rojo"
+        "guante-1",
+        "guante-2"
       ],
       "zapatos": [
-        "zapato-basico",
-        "zapato-azul"
+        "zapato-1",
+        "zapato-2"
       ],
       "equipados": {
-        "guante": "guante-basico",
-        "zapato": "zapato-basico"
+        "guante": "guante-1",
+        "zapato": "zapato-1"
       }
     }
   },
@@ -32,14 +32,14 @@
     "golpe": 0,
     "inventario": {
       "guantes": [
-        "guante-basico"
+        "guante-1"
       ],
       "zapatos": [
-        "zapato-basico"
+        "zapato-1"
       ],
       "equipados": {
-        "guante": "guante-basico",
-        "zapato": "zapato-basico"
+        "guante": "guante-1",
+        "zapato": "zapato-1"
       }
     }
   },
@@ -53,14 +53,14 @@
     "golpe": 0,
     "inventario": {
       "guantes": [
-        "guante-basico"
+        "guante-1"
       ],
       "zapatos": [
-        "zapato-basico"
+        "zapato-1"
       ],
       "equipados": {
-        "guante": "guante-basico",
-        "zapato": "zapato-basico"
+        "guante": "guante-1",
+        "zapato": "zapato-1"
       }
     }
   },
@@ -74,14 +74,14 @@
     "golpe": 0,
     "inventario": {
       "guantes": [
-        "guante-basico"
+        "guante-1"
       ],
       "zapatos": [
-        "zapato-basico"
+        "zapato-1"
       ],
       "equipados": {
-        "guante": "guante-basico",
-        "zapato": "zapato-basico"
+        "guante": "guante-1",
+        "zapato": "zapato-1"
       }
     }
   },
@@ -95,14 +95,14 @@
     "golpe": 0,
     "inventario": {
       "guantes": [
-        "guante-basico"
+        "guante-1"
       ],
       "zapatos": [
-        "zapato-basico"
+        "zapato-1"
       ],
       "equipados": {
-        "guante": "guante-basico",
-        "zapato": "zapato-basico"
+        "guante": "guante-1",
+        "zapato": "zapato-1"
       }
     }
   },
@@ -116,14 +116,14 @@
     "golpe": 0,
     "inventario": {
       "guantes": [
-        "guante-basico"
+        "guante-1"
       ],
       "zapatos": [
-        "zapato-basico"
+        "zapato-1"
       ],
       "equipados": {
-        "guante": "guante-basico",
-        "zapato": "zapato-basico"
+        "guante": "guante-1",
+        "zapato": "zapato-1"
       }
     }
   },
@@ -137,14 +137,14 @@
     "golpe": 0,
     "inventario": {
       "guantes": [
-        "guante-basico"
+        "guante-1"
       ],
       "zapatos": [
-        "zapato-basico"
+        "zapato-1"
       ],
       "equipados": {
-        "guante": "guante-basico",
-        "zapato": "zapato-basico"
+        "guante": "guante-1",
+        "zapato": "zapato-1"
       }
     }
   }

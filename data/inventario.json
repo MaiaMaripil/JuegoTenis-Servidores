@@ -2,77 +2,77 @@
 {
   "guantes": [
     {
-      "id": "guante-basico",
+      "id": "guante-1",
       "nombre": "Guante básico",
-      "imagen": "../../assets/img/inventory/guante_1.webp",
+      "imagen": "/assets/img/inventory/guante_1.webp",
       "golpe": 1
     },
     {
-      "id": "guante-rojo",
+      "id": "guante-2",
       "nombre": "Guante rojo",
-      "imagen": "../../assets/img/inventory/guante_3.webp",
+      "imagen": "/assets/img/inventory/guante_3.webp",
       "golpe": 2
     },
     {
       "id": "guante-2",
       "nombre": "Guante del aprendiz",
-      "imagen": "../../assets/img/inventory/guante_2.webp",
+      "imagen": "/assets/img/inventory/guante_2.webp",
       "golpe": 3
     },
     {
       "id": "guante-4",
       "nombre": "Guante de la corona",
-      "imagen": "../../assets/img/inventory/guante_4.webp",
+      "imagen": "/assets/img/inventory/guante_4.webp",
       "golpe": 4
     },
     {
       "id": "guante-5",
       "nombre": "Guante del dragón",
-      "imagen": "../../assets/img/inventory/guante_5.webp",
+      "imagen": "/assets/img/inventory/guante_5.webp",
       "golpe": 5
     },
     {
       "id": "guante-6",
       "nombre": "Guante imperial",
-      "imagen": "../../assets/img/inventory/guante_6.webp",
+      "imagen": "/assets/img/inventory/guante_6.webp",
       "golpe": 6
     },
     {
       "id": "guante-7",
       "nombre": "Guante de los halcones",
-      "imagen": "../../assets/img/inventory/guante_7.webp",
+      "imagen": "/assets/img/inventory/guante_7.webp",
       "golpe": 7
     },
     {
       "id": "guante-8",
       "nombre": "Guante del campeón",
-      "imagen": "../../assets/img/inventory/guante_8.webp",
+      "imagen": "/assets/img/inventory/guante_8.webp",
       "golpe": 8
     }
   ],
   "zapatos": [
     {
-      "id": "zapato-basico",
+      "id": "zapato-1",
       "nombre": "Zapato básico",
-      "imagen": "../../assets/img/inventory/zapato_1.webp",
+      "imagen": "/assets/img/inventory/zapato_1.webp",
       "agilidad": 1
     },
     {
-      "id": "zapato-azul",
+      "id": "zapato-2",
       "nombre": "Zapato azul",
-      "imagen": "../../assets/img/inventory/zapato_2.webp",
+      "imagen": "/assets/img/inventory/zapato_2.webp",
       "agilidad": 2
     },
     {
       "id": "zapato-3",
       "nombre": "Botines del peregrino",
-      "imagen": "../../assets/img/inventory/zapato_3.webp",
+      "imagen": "/assets/img/inventory/zapato_3.webp",
       "agilidad": 3
     },
     {
       "id": "zapato-4",
       "nombre": "Botines reales",
-      "imagen": "../../assets/img/inventory/zapato_4.webp",
+      "imagen": "/assets/img/inventory/zapato_4.webp",
       "agilidad": 4
     }
   ]

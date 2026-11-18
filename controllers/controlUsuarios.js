@@ -5,11 +5,11 @@ const rutaDatosUsuario = path.join(__dirname, '../data/usuarios.json');
 const crypto = require('crypto');
 
 const inventarioInicial = () => ({
-    guantes: ['guante-basico'],
-    zapatos: ['zapato-basico'],
+    guantes: ['guante-1'],
+    zapatos: ['zapato-1'],
     equipados: {
-        guante: 'guante-basico',
-        zapato: 'zapato-basico'
+        guante: 'guante-1',
+        zapato: 'zapato-1'
     }
 });
 
