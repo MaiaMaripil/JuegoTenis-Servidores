@@ -71,7 +71,6 @@ const verificarLogin = (req, res) => {
         if (usuarioEncontrado) {
             estado = 200;
             rta = {
-                mensaje: 'Bienvenido/a!',
                 usuario: {
                     id: usuarioEncontrado.id,
                     nombre: usuarioEncontrado.nombre,

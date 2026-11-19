@@ -39,11 +39,9 @@ botonIngresar.addEventListener('click', async (e) => {
         mensajeEstado.textContent = resultado.error;
     } else {
         mensajeEstado.style.color = 'yellow';
-        mensajeEstado.textContent = resultado.mensaje;
+        mensajeEstado.textContent = 'Beinvenido/a!';
         localStorage.setItem('sesionActiva', 'true');
-        localStorage.setItem('usuarioActual', JSON.stringify(resultado.usuario));
-
-        
+        localStorage.setItem('usuarioActual', JSON.stringify(resultado.usuario));     
 
         //Para que quede el mensaje unos segundos
         setTimeout(() => {
@@ -53,7 +51,6 @@ botonIngresar.addEventListener('click', async (e) => {
         
     }
 });
-
 
 
 
